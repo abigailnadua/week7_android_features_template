@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_contacts/flutter_contacts.dart';
 import 'contact.dart';
-import 'contact_form.dart';
 
 void main() => runApp(const MyApp());
 
@@ -21,19 +20,19 @@ class MyApp extends StatelessWidget {
                   fontWeight: FontWeight.bold)),
           floatingActionButtonTheme: const FloatingActionButtonThemeData(
               backgroundColor: Colors.blue, foregroundColor: Colors.white)),
-      home: const FlutterContactsExample(),
+      home: const ContactList(),
     );
   }
 }
 
-class FlutterContactsExample extends StatefulWidget {
-  const FlutterContactsExample({super.key});
+class ContactList extends StatefulWidget {
+  const ContactList({super.key});
 
   @override
-  State<FlutterContactsExample> createState() => _FlutterContactsExampleState();
+  State<ContactList> createState() => _ContactListState();
 }
 
-class _FlutterContactsExampleState extends State<FlutterContactsExample> {
+class _ContactListState extends State<ContactList> {
   List<Contact>? _contacts;
   bool _permissionDenied = false;
 
@@ -60,16 +59,7 @@ class _FlutterContactsExampleState extends State<FlutterContactsExample> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('My Own Contacts App')),
-      body: _body(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (_) => const ContactForm()));
-        },
-        child: const Icon(Icons.contacts),
-      ),
-    );
+        appBar: AppBar(title: const Text('My Contacts')), body: _body());
   }
 
   Widget _body() {
